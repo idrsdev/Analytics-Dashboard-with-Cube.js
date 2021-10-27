@@ -53,7 +53,7 @@ psql --dbname ecom -f ecom-dump.sql
 7. On successful setup and connection the database tables will be visible inside the schema tab. You can generate the table schema files as show:
    ![generate schema](media/generate-schema.png)
 
-1. If you want you can play around with build and schema option in the UI. Now Moving on to the setup instructions for the react frontend. First execute the below commond to install the frontend dependencies.
+8. If you want you can play around with build and schema option in the UI. Now Moving on to the setup instructions for the react frontend. First execute the below commond to install the frontend dependencies.
 
 ```
 cd dashboard-app
@@ -68,13 +68,13 @@ npm run start
 
 ![start dashboard](media/start-dashboard.png)
 
-1. If you have followed along the guide correctly you will have the dashboard up and running by now. The dashboard can be accessed at http://localhost:3000
+10. If you have followed along the guide correctly you will have the dashboard up and running by now. The dashboard can be accessed at http://localhost:3000
 
 ![dashboard view](media/dashboard-view.png)
 
-1. Additionally if you are interested in running the application on docker. Then follow along by first terminating the currently running instance of the application.
+11. Additionally if you are interested in running the application on docker. Then follow along by first terminating the currently running instance of the application.
 
-2. The first thing is to revert any changes made to the `.env` file in the project root. The `.env` file database configuration should match the postgres configurations inside `docker-compose.yml`
+12. The first thing is to revert any changes made to the `.env` file in the project root. The `.env` file database configuration should match the postgres configurations inside `docker-compose.yml`
 
 ```
 version: '3'
@@ -109,7 +109,7 @@ services:
       - postgres
 ```
 
-3. Next execute the following command to start the containers
+13. Next execute the following command to start the containers
 
 ```
 docker compose up -d
