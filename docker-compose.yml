@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+   postgres:
+      image: postgres:latest
+      container_name: postgres
+      ports:
+         - 5432:5432
+      environment:
+         POSTGRES_USER: postgres
+         POSTGRES_PASSWORD: postgres
+         POSTGRES_DB: ecom
+      volumes:
+         - ./ecom-dump.sql:/ecom-dump.sql
+
+   cube:
+      image: cubejs/cube:latest
+      container_name: cube
+      ports:
+         # It's better to use random port binding for 4000/3000 ports
+         # without it you will not able to start multiple projects inside docker
+         - 4000:4000 # Cube.js API and Developer Playground
+         - 3000:3000 # Dashboard app, if created
+      env_file: .env
+      volumes:
+         - .:/cube/conf
+         # We ignore Cube.js deps, because they are built-in inside the official Docker image
+         - .empty:/cube/conf/node_modules/@cubejs-backend/
+      depends_on:
+         - postgres
